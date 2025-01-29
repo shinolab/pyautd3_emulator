@@ -14,8 +14,8 @@ class RecorderLink(Link):
         super().__init__()
 
     def _resolve(self: Self) -> LinkPtr:
-        err = "Not implemented"
-        raise NotImplementedError(err)
+        err = "Not implemented"  # pragma: no cover
+        raise NotImplementedError(err)  # pragma: no cover
 
     def tick(self: Self, tick: Duration) -> None:
         _validate_status(
