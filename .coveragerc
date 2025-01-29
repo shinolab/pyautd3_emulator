@@ -1,0 +1,11 @@
+[report]
+exclude_lines =
+    @abstractmethod
+    @abc.abstractmethod
+
+    def __repr__
+    if TYPE_CHECKING:
+
+    pragma: no cover
+
+    TracingInitWithFile
