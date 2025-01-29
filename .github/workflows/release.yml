@@ -10,7 +10,7 @@ env:
 
 jobs:
   publish:
-    name: publish-to-pypi-${{ matrix.os }}-${{ matrix.arch }}
+    name: publish-to-pypi-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
