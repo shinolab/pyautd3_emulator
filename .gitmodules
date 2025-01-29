@@ -1,0 +1,3 @@
+[submodule "tools/wrapper-generator/capi-emulator"]
+	path = tools/wrapper-generator/capi-emulator
+	url = https://github.com/shinolab/autd3-capi-emulator.git

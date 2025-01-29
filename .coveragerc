@@ -1,0 +1,17 @@
+[report]
+exclude_lines =
+    @abstractmethod
+    @abc.abstractmethod
+
+    def __repr__
+    if TYPE_CHECKING:
+
+    pragma: no cover
+
+    TracingInitWithFile
+    TracingInit 
+
+
+[run]
+omit =
+    pyautd3_emulator/native_methods/__init__.py

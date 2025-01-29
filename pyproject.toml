@@ -1,0 +1,48 @@
+[project]
+name = "pyautd3_emulator"
+authors = [{ name = "Shun Suzuki", email = "suzuki@hapis.k.u-tokyo.ac.jp" }]
+version = "29.0.0rc18"
+description = "autd3-emulator library wrapper for python"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2", "pyautd3==29.0.0rc18"]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX",
+    "License :: OSI Approved :: MIT License",
+]
+[project.urls]
+Repository = "https://github.com/shinolab/pyautd3_emulator.git"
+
+[build-system]
+requires = ["wheel", "setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+pyautd3_emulator = ["py.typed"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 150
+exclude = [".venv", "venv"]
+
+[tool.ruff.lint]
+ignore = ["D", "SLF001", "C901", "PLR0913"]
+select = ["ALL"]
+fixable = ["ALL"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"pyautd3_emulator/*.py" = ["TD", "FIX002"]
+"tests/*.py" = ["S101", "T201", "ANN201", "PLR0915", "PLR2004"]
+"example/*.py" = ["T201", "PLR2004", "PD901"]
+"pyautd3_emulator/native_methods/*.py" = ["ANN", "RUF012", "FBT001", "PLR0915"]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = 'session'
+
+[tool.uv]
+dev-dependencies = ["matplotlib>=3.9.2", "mypy>=1.11.2", "pytest>=8.3.3", "pytest-xdist>=3.6.1", "ruff>=0.6.9", "pytest-cov>=5.0.0", "build>=1.2.2.post1", "wheel>=0.44.0"]
