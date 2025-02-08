@@ -26,35 +26,35 @@ ash 0.38.0+1.3.281 (Apache-2.0 OR MIT)
 https://github.com/ash-rs/ash
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.19 (MIT)
+autd3 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-core 29.0.0-rc.19 (MIT)
+autd3-core 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.19 (MIT)
+autd3-derive 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.19 (MIT)
+autd3-driver 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-emulator 29.0.0-rc.19 (MIT)
+autd3-emulator 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-emulator
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.19 (MIT)
+autd3-firmware-emulator 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3capi-driver 29.0.0-rc.19 (MIT)
+autd3capi-driver 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-capi
 ---------------------------------------------------------
 
-autd3capi-emulator 29.0.0-rc.19 (MIT)
+autd3capi-emulator 29.0.0-rc.20 (MIT)
 https://github.com/shinolab/autd3-capi-emulator
 ---------------------------------------------------------
 
@@ -146,11 +146,11 @@ derive-new 0.7.0 (MIT)
 https://github.com/nrc/derive-new
 ---------------------------------------------------------
 
-derive_more 1.0.0 (MIT)
+derive_more 2.0.1 (MIT)
 https://github.com/JelteF/derive_more
 ---------------------------------------------------------
 
-derive_more-impl 1.0.0 (MIT)
+derive_more-impl 2.0.1 (MIT)
 https://github.com/JelteF/derive_more
 ---------------------------------------------------------
 
@@ -366,7 +366,7 @@ objc 0.2.7 (MIT)
 http://github.com/SSheldon/rust-objc
 ---------------------------------------------------------
 
-once_cell 1.20.2 (Apache-2.0 OR MIT)
+once_cell 1.20.3 (Apache-2.0 OR MIT)
 https://github.com/matklad/once_cell
 ---------------------------------------------------------
 
@@ -841,7 +841,7 @@ zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy 0.8.14 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.8.17 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
@@ -849,7 +849,7 @@ zerocopy-derive 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.8.14 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.8.17 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 
 ---------------------------------------------------------
