@@ -49,7 +49,7 @@ if __name__ == "__main__":
         plt.show()
 
         # plot sound pressure at focus under 200Hz sin modulation with silencer
-        focus = emulator.center + np.array([0.0, 0.0, 150.0])
+        focus = emulator.center() + np.array([0.0, 0.0, 150.0])
 
         def f(autd: Recorder) -> None:
             autd.send(Silencer())
