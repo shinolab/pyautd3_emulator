@@ -26,35 +26,35 @@ ash 0.38.0+1.3.281 (Apache-2.0 OR MIT)
 https://github.com/ash-rs/ash
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.20 (MIT)
+autd3 29.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-core 29.0.0-rc.20 (MIT)
+autd3-core 29.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.20 (MIT)
+autd3-derive 29.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.20 (MIT)
+autd3-driver 29.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-emulator 29.0.0-rc.20 (MIT)
+autd3-emulator 29.0.0 (MIT)
 https://github.com/shinolab/autd3-emulator
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.20 (MIT)
+autd3-firmware-emulator 29.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3capi-driver 29.0.0-rc.20 (MIT)
+autd3capi-driver 29.0.0 (MIT)
 https://github.com/shinolab/autd3-capi
 ---------------------------------------------------------
 
-autd3capi-emulator 29.0.0-rc.20 (MIT)
+autd3capi-emulator 29.0.0 (MIT)
 https://github.com/shinolab/autd3-capi-emulator
 ---------------------------------------------------------
 
