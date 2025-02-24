@@ -61,12 +61,9 @@ if __name__ == "__main__":
         print("Calculating sound pressure at focus under 200Hz sin modulation with silencer...")
         sound_field = record.sound_field(
             RangeXYZ(
-                x_start=focus[0],
-                x_end=focus[0],
-                y_start=focus[1],
-                y_end=focus[1],
-                z_start=focus[2],
-                z_end=focus[2],
+                x=(focus[0], focus[0]),
+                y=(focus[1], focus[1]),
+                z=(focus[2], focus[2]),
                 resolution=1.0,
             ),
             InstantRecordOption(

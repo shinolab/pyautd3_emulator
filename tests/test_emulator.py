@@ -636,12 +636,9 @@ def test_sound_field_instant():
 
         sound_field = record.sound_field(
             RangeXYZ(
-                x_start=-1.0,
-                x_end=1.0,
-                y_start=0.0,
-                y_end=0.0,
-                z_start=10.0,
-                z_end=10.0,
+                x=(-1.0, 1.0),
+                y=(0.0, 0.0),
+                z=(10.0, 10.0),
                 resolution=1.0,
             ),
             InstantRecordOption(
@@ -702,12 +699,9 @@ def test_sound_field_rms():
 
         sound_field = record.sound_field(
             RangeXYZ(
-                x_start=-1.0,
-                x_end=1.0,
-                y_start=0.0,
-                y_end=0.0,
-                z_start=10.0,
-                z_end=10.0,
+                x=(-1.0, 1.0),
+                y=(0.0, 0.0),
+                z=(10.0, 10.0),
                 resolution=1.0,
             ),
             RmsRecordOption(),
