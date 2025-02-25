@@ -1,11 +1,11 @@
 [project]
 name = "pyautd3_emulator"
 authors = [{ name = "Shun Suzuki", email = "suzuki@hapis.k.u-tokyo.ac.jp" }]
-version = "30.0.1.1"
+version = "30.0.1.2"
 description = "autd3-emulator library wrapper for python"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["numpy>=2", "polars>=1.21.0", "pyautd3==30.0.1.1"]
+dependencies = ["numpy>=2", "polars>=1.21.0", "pyautd3==30.0.1.2"]
 classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
