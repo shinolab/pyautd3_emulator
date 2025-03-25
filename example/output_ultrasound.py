@@ -15,7 +15,7 @@ if __name__ == "__main__":
         record = emulator.record(f)
 
         df = record.output_voltage()
-        t = [float(c.replace("voltage[V]@", "").replace("[25us/256]", "")) * 0.025 / 256.0 for c in df.columns]
+        t = [float(c.replace("voltage[V]@", "").replace("[25us/512]", "")) * 0.025 / 512.0 for c in df.columns]
         v = df.row(0)
         plt.plot(t, v)
         plt.xlim(0, 1)
@@ -26,7 +26,7 @@ if __name__ == "__main__":
         plt.show()
 
         df = record.output_ultrasound()
-        t = [float(c.replace("p[a.u.]@", "").replace("[25us/256]", "")) * 0.025 / 256.0 for c in df.columns]
+        t = [float(c.replace("p[a.u.]@", "").replace("[25us/512]", "")) * 0.025 / 512.0 for c in df.columns]
         v = df.row(0)
         plt.plot(t, v)
         plt.xlim(0, 1)

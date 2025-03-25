@@ -7,13 +7,6 @@ from pyautd3.native_methods.autd3capi_driver import Duration, GeometryPtr, LinkP
 from pyautd3.native_methods.structs import Point3, Quaternion
 
 
-class EmulatorControllerPtr(ctypes.Structure):
-    _fields_ = [("value", ctypes.c_void_p)]
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, EmulatorControllerPtr) and self._fields_ == other._fields_  # pragma: no cover
-
-
 class InstantPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
@@ -21,11 +14,39 @@ class InstantPtr(ctypes.Structure):
         return isinstance(other, InstantPtr) and self._fields_ == other._fields_  # pragma: no cover
 
 
-class RecordPtr(ctypes.Structure):
+class EmulatorPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, RecordPtr) and self._fields_ == other._fields_  # pragma: no cover
+        return isinstance(other, EmulatorPtr) and self._fields_ == other._fields_  # pragma: no cover
+
+
+class EmulatorControllerPtr(ctypes.Structure):
+    _fields_ = [("value", ctypes.c_void_p)]
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, EmulatorControllerPtr) and self._fields_ == other._fields_  # pragma: no cover
+
+
+class RmsPtr(ctypes.Structure):
+    _fields_ = [("value", ctypes.c_void_p)]
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, RmsPtr) and self._fields_ == other._fields_  # pragma: no cover
+
+
+class ResultRms(ctypes.Structure):
+    _fields_ = [("result", RmsPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, ResultRms) and self._fields_ == other._fields_  # pragma: no cover
+
+
+class RmsRecordOption(ctypes.Structure):
+    _fields_ = [("sound_speed", ctypes.c_float), ("print_progress", ctypes.c_bool), ("gpu", ctypes.c_bool)]
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, RmsRecordOption) and self._fields_ == other._fields_  # pragma: no cover
 
 
 class RangeXYZ(ctypes.Structure):
@@ -43,13 +64,6 @@ class RangeXYZ(ctypes.Structure):
         return isinstance(other, RangeXYZ) and self._fields_ == other._fields_  # pragma: no cover
 
 
-class ResultRecord(ctypes.Structure):
-    _fields_ = [("result", RecordPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, ResultRecord) and self._fields_ == other._fields_  # pragma: no cover
-
-
 class InstantRecordOption(ctypes.Structure):
     _fields_ = [
         ("sound_speed", ctypes.c_float),
@@ -63,18 +77,18 @@ class InstantRecordOption(ctypes.Structure):
         return isinstance(other, InstantRecordOption) and self._fields_ == other._fields_  # pragma: no cover
 
 
-class EmulatorPtr(ctypes.Structure):
+class RecordPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, EmulatorPtr) and self._fields_ == other._fields_  # pragma: no cover
+        return isinstance(other, RecordPtr) and self._fields_ == other._fields_  # pragma: no cover
 
 
-class RmsPtr(ctypes.Structure):
-    _fields_ = [("value", ctypes.c_void_p)]
+class ResultRecord(ctypes.Structure):
+    _fields_ = [("result", RecordPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, RmsPtr) and self._fields_ == other._fields_  # pragma: no cover
+        return isinstance(other, ResultRecord) and self._fields_ == other._fields_  # pragma: no cover
 
 
 class ResultInstant(ctypes.Structure):
@@ -82,20 +96,6 @@ class ResultInstant(ctypes.Structure):
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ResultInstant) and self._fields_ == other._fields_  # pragma: no cover
-
-
-class RmsRecordOption(ctypes.Structure):
-    _fields_ = [("sound_speed", ctypes.c_float), ("print_progress", ctypes.c_bool), ("gpu", ctypes.c_bool)]
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, RmsRecordOption) and self._fields_ == other._fields_  # pragma: no cover
-
-
-class ResultRms(ctypes.Structure):
-    _fields_ = [("result", RmsPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, ResultRms) and self._fields_ == other._fields_  # pragma: no cover
 
 
 class Singleton(type):
@@ -123,7 +123,7 @@ class NativeMethods(metaclass=Singleton):
         self.dll.AUTDEmulatorRecordPhase.argtypes = [RecordPtr, ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.POINTER(ctypes.c_uint8))]
         self.dll.AUTDEmulatorRecordPhase.restype = None
 
-        self.dll.AUTDEmulatorRecordPulseWidth.argtypes = [RecordPtr, ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.POINTER(ctypes.c_uint8))]
+        self.dll.AUTDEmulatorRecordPulseWidth.argtypes = [RecordPtr, ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.POINTER(ctypes.c_uint16))]
         self.dll.AUTDEmulatorRecordPulseWidth.restype = None
 
         self.dll.AUTDEmulatorSoundFieldInstant.argtypes = [RecordPtr, RangeXYZ, InstantRecordOption]
@@ -252,7 +252,7 @@ class NativeMethods(metaclass=Singleton):
         self,
         record: RecordPtr,
         time: ctypes.Array[ctypes.c_uint64],
-        v: ctypes.Array[ctypes.Array[ctypes.c_uint8]],
+        v: ctypes.Array[ctypes.Array[ctypes.c_uint16]],
     ) -> None:
         return self.dll.AUTDEmulatorRecordPulseWidth(record, time, v)
 
