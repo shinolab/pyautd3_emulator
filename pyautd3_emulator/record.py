@@ -47,15 +47,15 @@ class Record:
         cols = int(Emu().emulator_record_drive_cols(self._ptr))
         rows = int(Emu().emulator_record_drive_rows(self._ptr))
         time = np.zeros(cols, dtype=np.uint64)
-        v = np.zeros([cols, rows], dtype=np.uint8)
+        v = np.zeros([cols, rows], dtype=np.uint16)
         Emu().emulator_record_pulse_width(
             self._ptr,
             time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),  # type: ignore[arg-type]
             ctypes.cast(
-                (ctypes.POINTER(ctypes.c_uint8) * cols)(
-                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint8)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                (ctypes.POINTER(ctypes.c_uint16) * cols)(
+                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint16)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
                 ),
-                ctypes.POINTER(ctypes.POINTER(ctypes.c_uint8)),
+                ctypes.POINTER(ctypes.POINTER(ctypes.c_uint16)),
             ),
         )
         return pl.DataFrame({s.name: s for s in (pl.Series(name=f"pulse_width@{time[i]}[ns]", values=v[i]) for i in range(cols))})
@@ -73,7 +73,7 @@ class Record:
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_float)),
             ),
         )
-        return pl.DataFrame({s.name: s for s in (pl.Series(name=f"voltage[V]@{i}[25us/256]", values=v[i]) for i in range(cols))})
+        return pl.DataFrame({s.name: s for s in (pl.Series(name=f"voltage[V]@{i}[25us/512]", values=v[i]) for i in range(cols))})
 
     def output_ultrasound(self: Self) -> pl.DataFrame:
         cols = int(Emu().emulator_record_output_cols(self._ptr))
@@ -88,7 +88,7 @@ class Record:
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_float)),
             ),
         )
-        return pl.DataFrame({s.name: s for s in (pl.Series(name=f"p[a.u.]@{i}[25us/256]", values=v[i]) for i in range(cols))})
+        return pl.DataFrame({s.name: s for s in (pl.Series(name=f"p[a.u.]@{i}[25us/512]", values=v[i]) for i in range(cols))})
 
     def sound_field(self: Self, range_: RangeXYZ, option: InstantRecordOption | RmsRecordOption) -> Instant | Rms:
         match option:

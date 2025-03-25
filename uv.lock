@@ -465,21 +465,21 @@ wheels = [
 
 [[package]]
 name = "pyautd3"
-version = "31.0.1"
+version = "32.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f0/15/1a0fe433a20aa3762ca8d920d58b2848fcc451ba85ec40006b865ee43cb3/pyautd3-31.0.1.tar.gz", hash = "sha256:8f03ec81226e47eba46cd519139ee882c652fda2bedc5644c923ddb7213b4051", size = 4221622 }
+sdist = { url = "https://files.pythonhosted.org/packages/7a/90/e9460134449aadf9083255ffefa6f7d5655e6dcec13e1f8512dfe9472be7/pyautd3-32.0.0.tar.gz", hash = "sha256:21637ac620713fb53c31144ed59831325c546d804ae09a6a9c6b7610a27fcf5f", size = 4840355 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/6a/b79832742d785433da7280e51351fe9c86b320ff4baf6905b3828de52ba2/pyautd3-31.0.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:a5f45241639531df9bc7aabd6c461fa60e6a45ef8ea8edf07de0b331afcc16bf", size = 4271546 },
-    { url = "https://files.pythonhosted.org/packages/f8/1d/c3017f286850c260e448664899dc2245addabaa737aecea16b0c24f8cfd5/pyautd3-31.0.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:89f93b0d486c7d1008d55fb24438860f77c029b0e47991eb9ab01953bbab4c88", size = 4890542 },
-    { url = "https://files.pythonhosted.org/packages/98/6d/8c284cd08496bae1d61607f17cafd0ff8f94d75d1eca35124a8642481cc2/pyautd3-31.0.1-py3-none-win_amd64.whl", hash = "sha256:e7c07b39b37b7570767fcd6a3e26f6225bd2991fbdb71a8f60d8caa84b261e0c", size = 4248471 },
+    { url = "https://files.pythonhosted.org/packages/f9/5e/25e7655f2b3224f625c5b35991ee47fdf31a91a690b06e4f15a490555321/pyautd3-32.0.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1021a66ef80b48c85b5a323975f68689393f6513967feb24ee54b14943ba6247", size = 4278527 },
+    { url = "https://files.pythonhosted.org/packages/7b/98/0f06a2c0b94736ed7193ae8c09ea1fda288e4399af2f712d67c27e31a754/pyautd3-32.0.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:4469959eee9cf46c012c6f4485b2412f0a611a21419b796207b06fa0160a034c", size = 4891585 },
+    { url = "https://files.pythonhosted.org/packages/d9/16/301207352ae3c7a1aeabd36d80e7379dcd294d9b178ff2a91d7aac6c8e8a/pyautd3-32.0.0-py3-none-win_amd64.whl", hash = "sha256:767195f25c7addd291883c805ed433b88cc9b757a1362d005ad8bc95217d9c1d", size = 4246667 },
 ]
 
 [[package]]
 name = "pyautd3-emulator"
-version = "31.0.1"
+version = "32.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
@@ -503,7 +503,7 @@ dev = [
 requires-dist = [
     { name = "numpy", specifier = ">=2" },
     { name = "polars", specifier = ">=1.21.0" },
-    { name = "pyautd3", specifier = "==31.0.1" },
+    { name = "pyautd3", specifier = "==32.0.0" },
 ]
 
 [package.metadata.requires-dev]
