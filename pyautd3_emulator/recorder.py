@@ -1,6 +1,6 @@
 from typing import Self
 
-from pyautd3 import Controller
+from pyautd3 import Controller, SenderOption
 from pyautd3.driver.link import Link
 from pyautd3.native_methods.autd3capi_driver import ControllerPtr, GeometryPtr, LinkPtr
 from pyautd3.native_methods.utils import _validate_status
@@ -25,7 +25,7 @@ class RecorderLink(Link):
 
 class Recorder(Controller[RecorderLink]):
     def __init__(self: Self, geometry: GeometryPtr, ptr: ControllerPtr) -> None:
-        super().__init__(geometry, ptr, RecorderLink())
+        super().__init__(geometry, ptr, RecorderLink(), SenderOption())
 
     def tick(self: Self, tick: Duration) -> None:
         self._link.tick(tick)
