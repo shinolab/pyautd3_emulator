@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from pyautd3 import AUTD3, EmitIntensity, Phase, Silencer, Static, Uniform
+from pyautd3 import AUTD3, Intensity, Phase, Silencer, Static, Uniform
 from pyautd3.utils import Duration
 
 from pyautd3_emulator import Emulator, Recorder
@@ -9,7 +9,7 @@ if __name__ == "__main__":
         # output voltage
         def f(autd: Recorder) -> None:
             autd.send(Silencer.disable())
-            autd.send((Static(intensity=0xFF), Uniform(phase=Phase(0x40), intensity=EmitIntensity(0xFF))))
+            autd.send((Static(intensity=0xFF), Uniform(phase=Phase(0x40), intensity=Intensity(0xFF))))
             autd.tick(Duration.from_millis(1))
 
         record = emulator.record(f)

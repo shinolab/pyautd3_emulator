@@ -13,6 +13,9 @@ class EmulatorControllerPtr(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, EmulatorControllerPtr) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class EmulatorPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
@@ -20,12 +23,18 @@ class EmulatorPtr(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, EmulatorPtr) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class InstantPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, InstantPtr) and self._fields_ == other._fields_  # pragma: no cover
+
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
 
 
 class InstantRecordOption(ctypes.Structure):
@@ -39,6 +48,9 @@ class InstantRecordOption(ctypes.Structure):
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, InstantRecordOption) and self._fields_ == other._fields_  # pragma: no cover
+
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
 
 
 class RangeXYZ(ctypes.Structure):
@@ -55,12 +67,18 @@ class RangeXYZ(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RangeXYZ) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class RecordPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RecordPtr) and self._fields_ == other._fields_  # pragma: no cover
+
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
 
 
 class ResultInstant(ctypes.Structure):
@@ -69,12 +87,18 @@ class ResultInstant(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ResultInstant) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class ResultRecord(ctypes.Structure):
     _fields_ = [("result", RecordPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ResultRecord) and self._fields_ == other._fields_  # pragma: no cover
+
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
 
 
 class RmsPtr(ctypes.Structure):
@@ -83,6 +107,9 @@ class RmsPtr(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RmsPtr) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class RmsRecordOption(ctypes.Structure):
     _fields_ = [("sound_speed", ctypes.c_float), ("print_progress", ctypes.c_bool), ("gpu", ctypes.c_bool)]
@@ -90,12 +117,18 @@ class RmsRecordOption(ctypes.Structure):
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RmsRecordOption) and self._fields_ == other._fields_  # pragma: no cover
 
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
+
 
 class ResultRms(ctypes.Structure):
     _fields_ = [("result", RmsPtr), ("err_len", ctypes.c_uint32), ("err", ctypes.c_void_p)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ResultRms) and self._fields_ == other._fields_  # pragma: no cover
+
+    def __hash__(self) -> int:
+        return super().__hash__()  # pragma: no cover
 
 
 class Singleton(type):
