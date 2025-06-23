@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from pyautd3 import AUTD3, EmitIntensity, Focus, Hz, Silencer, Sine, Uniform
+from pyautd3 import AUTD3, Focus, Hz, Intensity, Silencer, Sine, Uniform
 from pyautd3.driver.firmware.fpga.phase import Phase
 from pyautd3.gain.focus import FocusOption
 from pyautd3.modulation.sine import SineOption
@@ -13,7 +13,7 @@ if __name__ == "__main__":
         # pulse width under 200Hz sine modulation with silencer
         def f(autd: Recorder) -> None:
             autd.send(Silencer())
-            autd.send((Sine(freq=200.0 * Hz, option=SineOption()), Uniform(intensity=EmitIntensity(0xFF), phase=Phase(0))))
+            autd.send((Sine(freq=200.0 * Hz, option=SineOption()), Uniform(intensity=Intensity(0xFF), phase=Phase(0))))
             autd.tick(Duration.from_millis(10))
 
         record = emulator.record(f)
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         # pulse width under 200Hz sine modulation without silencer
         def f(autd: Recorder) -> None:
             autd.send(Silencer.disable())
-            autd.send((Sine(freq=200.0 * Hz, option=SineOption()), Uniform(intensity=EmitIntensity(0xFF), phase=Phase(0))))
+            autd.send((Sine(freq=200.0 * Hz, option=SineOption()), Uniform(intensity=Intensity(0xFF), phase=Phase(0))))
             autd.tick(Duration.from_millis(10))
 
         record = emulator.record(f)
