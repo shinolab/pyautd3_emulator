@@ -18,7 +18,7 @@ arrayvec 0.7.6 (Apache-2.0 OR MIT)
 https://github.com/bluss/arrayvec
 ---------------------------------------------------------
 
-autd3 35.0.0 (MIT)
+autd3 35.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -34,7 +34,7 @@ autd3-core 34.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-core 35.0.0 (MIT)
+autd3-core 35.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -50,7 +50,7 @@ autd3-derive 34.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 35.0.0 (MIT)
+autd3-derive 35.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -66,11 +66,11 @@ autd3-driver 34.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 35.0.0 (MIT)
+autd3-driver 35.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-emulator 35.0.0 (MIT)
+autd3-emulator 35.0.1 (MIT)
 https://github.com/shinolab/autd3-emulator
 ---------------------------------------------------------
 
@@ -86,15 +86,15 @@ autd3-firmware-emulator 34.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 35.0.0 (MIT)
+autd3-firmware-emulator 35.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3capi-driver 35.0.0 (MIT)
+autd3capi-driver 35.0.1 (MIT)
 https://github.com/shinolab/autd3-capi
 ---------------------------------------------------------
 
-autd3capi-emulator 35.0.0 (MIT)
+autd3capi-emulator 35.0.1 (MIT)
 https://github.com/shinolab/autd3-capi-emulator
 ---------------------------------------------------------
 
