@@ -8,10 +8,6 @@ exclude_lines =
 
     pragma: no cover
 
-    TracingInitWithFile
-    TracingInit 
-
-
 [run]
 omit =
     pyautd3_emulator/native_methods/__init__.py

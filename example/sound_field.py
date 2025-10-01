@@ -30,7 +30,6 @@ def plot_focus() -> None:
             ),
             InstantRecordOption(
                 time_step=Duration.from_micros(1),
-                print_progress=True,
                 gpu=True,
             ),
         )
@@ -115,7 +114,6 @@ def plot_stm() -> None:
             ),
             InstantRecordOption(
                 time_step=Duration.from_nanos(2500),
-                print_progress=True,
                 gpu=True,
             ),
         )

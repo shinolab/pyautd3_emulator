@@ -28,7 +28,6 @@ def plot_focus() -> None:
                 resolution=1.0,
             ),
             RmsRecordOption(
-                print_progress=True,
                 gpu=True,
             ),
         )
@@ -89,7 +88,6 @@ def plot_stm() -> None:
                 resolution=1.0,
             ),
             RmsRecordOption(
-                print_progress=True,
                 gpu=True,
             ),
         )

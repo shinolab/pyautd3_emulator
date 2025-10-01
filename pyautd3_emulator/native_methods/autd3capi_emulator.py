@@ -7,16 +7,6 @@ from pyautd3.native_methods.autd3capi_driver import Duration, GeometryPtr, LinkP
 from pyautd3.native_methods.structs import Point3, Quaternion
 
 
-class EmulatorControllerPtr(ctypes.Structure):
-    _fields_ = [("value", ctypes.c_void_p)]
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, EmulatorControllerPtr) and self._fields_ == other._fields_  # pragma: no cover
-
-    def __hash__(self) -> int:
-        return super().__hash__()  # pragma: no cover
-
-
 class EmulatorPtr(ctypes.Structure):
     _fields_ = [("value", ctypes.c_void_p)]
 
@@ -38,13 +28,7 @@ class InstantPtr(ctypes.Structure):
 
 
 class InstantRecordOption(ctypes.Structure):
-    _fields_ = [
-        ("sound_speed", ctypes.c_float),
-        ("time_step", Duration),
-        ("print_progress", ctypes.c_bool),
-        ("memory_limits_hint_mb", ctypes.c_uint64),
-        ("gpu", ctypes.c_bool),
-    ]
+    _fields_ = [("sound_speed", ctypes.c_float), ("time_step", Duration), ("memory_limits_hint_mb", ctypes.c_uint64), ("gpu", ctypes.c_bool)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, InstantRecordOption) and self._fields_ == other._fields_  # pragma: no cover
@@ -112,7 +96,7 @@ class RmsPtr(ctypes.Structure):
 
 
 class RmsRecordOption(ctypes.Structure):
-    _fields_ = [("sound_speed", ctypes.c_float), ("print_progress", ctypes.c_bool), ("gpu", ctypes.c_bool)]
+    _fields_ = [("sound_speed", ctypes.c_float), ("gpu", ctypes.c_bool)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RmsRecordOption) and self._fields_ == other._fields_  # pragma: no cover
@@ -190,12 +174,6 @@ class NativeMethods(metaclass=Singleton):
 
         self.dll.AUTDEmulatorSoundFieldInstantFree.argtypes = [InstantPtr]
         self.dll.AUTDEmulatorSoundFieldInstantFree.restype = None
-
-        self.dll.AUTDEmulatorTracingInit.argtypes = []
-        self.dll.AUTDEmulatorTracingInit.restype = None
-
-        self.dll.AUTDEmulatorTracingInitWithFile.argtypes = [ctypes.c_char_p]
-        self.dll.AUTDEmulatorTracingInitWithFile.restype = ResultStatus
 
         self.dll.AUTDEmulator.argtypes = [ctypes.POINTER(Point3), ctypes.POINTER(Quaternion), ctypes.c_uint16]
         self.dll.AUTDEmulator.restype = EmulatorPtr
@@ -321,12 +299,6 @@ class NativeMethods(metaclass=Singleton):
 
     def emulator_sound_field_instant_free(self, sound_field: InstantPtr) -> None:
         return self.dll.AUTDEmulatorSoundFieldInstantFree(sound_field)
-
-    def emulator_tracing_init(self) -> None:
-        return self.dll.AUTDEmulatorTracingInit()
-
-    def emulator_tracing_init_with_file(self, path: bytes) -> ResultStatus:
-        return self.dll.AUTDEmulatorTracingInitWithFile(path)
 
     def emulator(self, pos: ctypes.Array[Point3], rot: ctypes.Array[Quaternion], len_: int) -> EmulatorPtr:
         return self.dll.AUTDEmulator(pos, rot, len_)
