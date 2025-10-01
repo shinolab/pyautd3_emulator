@@ -19,14 +19,12 @@ class InstantRecordOption:
         *,
         sound_speed: float = 340e3,
         time_step: Duration | None = None,
-        print_progress: bool = False,
         memory_limits_hint_mb: int = 128,
         gpu: bool = False,
     ) -> None:
         self._inner = InstantRecordOption_(
             sound_speed,
             (time_step or Duration.from_micros(1))._inner,
-            print_progress,
             memory_limits_hint_mb,
             gpu,
         )

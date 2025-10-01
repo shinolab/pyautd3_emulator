@@ -68,7 +68,6 @@ if __name__ == "__main__":
             ),
             InstantRecordOption(
                 time_step=Duration.from_micros(1),
-                print_progress=True,
             ),
         )
 

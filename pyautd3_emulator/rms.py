@@ -18,12 +18,10 @@ class RmsRecordOption:
         self: Self,
         *,
         sound_speed: float = 340e3,
-        print_progress: bool = False,
         gpu: bool = False,
     ) -> None:
         self._inner = RmsRecordOption_(
             sound_speed,
-            print_progress,
             gpu,
         )
 
