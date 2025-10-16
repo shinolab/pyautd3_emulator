@@ -30,7 +30,6 @@ def plot_focus() -> None:
             ),
             InstantRecordOption(
                 time_step=Duration.from_micros(1),
-                gpu=True,
             ),
         )
         print("Calculating sound field around focus...")
@@ -114,7 +113,6 @@ def plot_stm() -> None:
             ),
             InstantRecordOption(
                 time_step=Duration.from_nanos(2500),
-                gpu=True,
             ),
         )
         print("Calculating sound field around focus...")

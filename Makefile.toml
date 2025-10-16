@@ -14,13 +14,11 @@ script = '''
 rm ./setup.cfg
 rm ./.coverage
 rm LICENSE
-rm ThirdPartyNotice.txt
 rm VERSION
 rm -rf dist
 rm -rf pyautd3_emulator.egg-info
 rm -rf pyautd3_emulator/bin
 rm pyautd3_emulator/LICENSE.txt
-rm pyautd3_emulator/ThirdPartyNotice.txt
 rm -rf htmlcov
 rm -rf .ruff_cache
 rm -rf .mypy_cache

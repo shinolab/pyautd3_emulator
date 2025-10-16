@@ -71,9 +71,8 @@ def copy_dll() -> None:
     if not should_update_dll(version):
         return
 
-    download_and_extract("autd3-capi-emulator", "autd3", version)
+    download_and_extract("autd3-capi-emulator", "autd3-capi-emulator", version)
     shutil.copyfile("LICENSE", "pyautd3_emulator/LICENSE.txt")
-    shutil.copyfile("ThirdPartyNotice.txt", "pyautd3_emulator/ThirdPartyNotice.txt")
 
     Path("VERSION").write_text(version)
 

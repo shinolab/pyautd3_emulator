@@ -27,9 +27,7 @@ def plot_focus() -> None:
                 z=(focus[2], focus[2]),
                 resolution=1.0,
             ),
-            RmsRecordOption(
-                gpu=True,
-            ),
+            RmsRecordOption(),
         )
         print("Calculating sound field around focus...")
 
@@ -87,9 +85,7 @@ def plot_stm() -> None:
                 z=(focus[2], focus[2]),
                 resolution=1.0,
             ),
-            RmsRecordOption(
-                gpu=True,
-            ),
+            RmsRecordOption(),
         )
         print("Calculating sound field around focus...")
 

@@ -138,7 +138,6 @@ dmypy.json
 
 pyautd3_emulator/bin/
 pyautd3_emulator/LICENSE.txt
-pyautd3_emulator/ThirdPartyNotice.txt
 setup.cfg
 VERSION
 *.zip

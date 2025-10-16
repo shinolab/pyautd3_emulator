@@ -28,7 +28,7 @@ class InstantPtr(ctypes.Structure):
 
 
 class InstantRecordOption(ctypes.Structure):
-    _fields_ = [("sound_speed", ctypes.c_float), ("time_step", Duration), ("memory_limits_hint_mb", ctypes.c_uint64), ("gpu", ctypes.c_bool)]
+    _fields_ = [("sound_speed", ctypes.c_float), ("time_step", Duration), ("memory_limits_hint_mb", ctypes.c_uint64)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, InstantRecordOption) and self._fields_ == other._fields_  # pragma: no cover
@@ -96,7 +96,7 @@ class RmsPtr(ctypes.Structure):
 
 
 class RmsRecordOption(ctypes.Structure):
-    _fields_ = [("sound_speed", ctypes.c_float), ("gpu", ctypes.c_bool)]
+    _fields_ = [("sound_speed", ctypes.c_float)]
 
     def __eq__(self, other: object) -> bool:
         return isinstance(other, RmsRecordOption) and self._fields_ == other._fields_  # pragma: no cover
