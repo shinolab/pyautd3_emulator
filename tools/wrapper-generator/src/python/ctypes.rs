@@ -39,7 +39,7 @@ impl TryFrom<syn::Type> for CtypesType {
                         "NonZeroU16" => "ctypes.c_uint16",
                         "NonZeroU32" => "ctypes.c_uint32",
                         "NonZeroU64" => "ctypes.c_uint64",
-                        "libc :: c_void" => "void",
+                        "std :: ffi :: c_void" | "c_void" => "void",
                         "ConstPtr" => "ctypes.c_void_p",
                         v => v,
                     }
