@@ -15,7 +15,7 @@ jobs:
     outputs:
       src: ${{ steps.changed-files-yaml.outputs.src_any_changed }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - id: changed-files-yaml
@@ -39,7 +39,7 @@ jobs:
         python-version: ["3.12", "3.13", "3.14"]
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-make
