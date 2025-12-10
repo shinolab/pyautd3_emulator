@@ -51,9 +51,9 @@ class Instant:
         x = np.zeros(points_len, dtype=np.float32)
         y = np.zeros(points_len, dtype=np.float32)
         z = np.zeros(points_len, dtype=np.float32)
-        Emu().emulator_sound_field_instant_get_x(self._ptr, x.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))  # type: ignore[arg-type]
-        Emu().emulator_sound_field_instant_get_y(self._ptr, y.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))  # type: ignore[arg-type]
-        Emu().emulator_sound_field_instant_get_z(self._ptr, z.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))  # type: ignore[arg-type]
+        Emu().emulator_sound_field_instant_get_x(self._ptr, x.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))
+        Emu().emulator_sound_field_instant_get_y(self._ptr, y.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))
+        Emu().emulator_sound_field_instant_get_z(self._ptr, z.ctypes.data_as(ctypes.POINTER(ctypes.c_float)))
         return pl.DataFrame(
             {
                 "x[mm]": x,
@@ -72,10 +72,10 @@ class Instant:
             Emu().emulator_sound_field_instant_next(
                 self._ptr,
                 duration._inner,
-                time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),  # type: ignore[arg-type]
+                time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
                 ctypes.cast(
                     (ctypes.POINTER(ctypes.c_float) * n)(
-                        *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                        *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),
                     ),
                     ctypes.POINTER(ctypes.POINTER(ctypes.c_float)),
                 ),

@@ -41,11 +41,16 @@ impl TryFrom<syn::Type> for PythonType {
                 ))
             }
             syn::Type::Ptr(syn::TypePtr { elem, .. }) => match *elem {
-                syn::Type::Ptr(syn::TypePtr { elem, .. }) => CtypesType::try_from(*elem)
-                    .map(|inner| PythonType(format!("ctypes.Array[ctypes.Array[{}]]", inner.0))),
+                syn::Type::Ptr(syn::TypePtr { elem, .. }) => {
+                    Ok(
+                        CtypesType::try_from(*elem).map(|inner| match inner.0.as_str() {
+                            v => PythonType(format!("\"ctypes._Pointer[ctypes._Pointer[{}]]\"", v)), // TODO: quote only required for python<3.14
+                        })?,
+                    )
+                }
                 elem => CtypesType::try_from(elem).map(|inner| match inner.0.as_str() {
                     "ctypes.c_char" => PythonType("bytes".to_owned()),
-                    v => PythonType(format!("ctypes.Array[{}]", v)),
+                    v => PythonType(format!("\"ctypes._Pointer[{}]\"", v)), // TODO: quote only required for python<3.14
                 }),
             },
             _ => anyhow::bail!("Unsupported type: {}", value.to_token_stream().to_string()),

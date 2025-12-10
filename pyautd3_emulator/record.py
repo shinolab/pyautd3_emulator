@@ -33,10 +33,10 @@ class Record:
         v = np.zeros([cols, rows], dtype=np.uint8)
         Emu().emulator_record_phase(
             self._ptr,
-            time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),  # type: ignore[arg-type]
+            time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
             ctypes.cast(
                 (ctypes.POINTER(ctypes.c_uint8) * cols)(
-                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint8)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint8)) for r in np.ctypeslib.as_ctypes(v)),
                 ),
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_uint8)),
             ),
@@ -50,10 +50,10 @@ class Record:
         v = np.zeros([cols, rows], dtype=np.uint16)
         Emu().emulator_record_pulse_width(
             self._ptr,
-            time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),  # type: ignore[arg-type]
+            time.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
             ctypes.cast(
                 (ctypes.POINTER(ctypes.c_uint16) * cols)(
-                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint16)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_uint16)) for r in np.ctypeslib.as_ctypes(v)),
                 ),
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_uint16)),
             ),
@@ -68,7 +68,7 @@ class Record:
             self._ptr,
             ctypes.cast(
                 (ctypes.POINTER(ctypes.c_float) * cols)(
-                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),
                 ),
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_float)),
             ),
@@ -83,7 +83,7 @@ class Record:
             self._ptr,
             ctypes.cast(
                 (ctypes.POINTER(ctypes.c_float) * cols)(
-                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),  # type: ignore[arg-type]
+                    *(ctypes.cast(r, ctypes.POINTER(ctypes.c_float)) for r in np.ctypeslib.as_ctypes(v)),
                 ),
                 ctypes.POINTER(ctypes.POINTER(ctypes.c_float)),
             ),
@@ -104,3 +104,5 @@ class Record:
                         Emu().emulator_sound_field_rms(self._ptr, range_._inner, option._inner),
                     ),
                 )
+            case _:  # pragma: no cover
+                raise NotImplementedError  # pragma: no cover

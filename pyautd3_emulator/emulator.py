@@ -25,11 +25,11 @@ class Emulator(Geometry):
 
     def __init__(self: Self, devices: Iterable[AUTD3]) -> None:
         devices = list(devices)
-        pos = np.fromiter((np.void(Point3(d.pos)) for d in devices), dtype=Point3)  # type: ignore[type-var,call-overload]
-        rot = np.fromiter((np.void(Quaternion(d.rot)) for d in devices), dtype=Quaternion)  # type: ignore[type-var,call-overload]
+        pos = np.fromiter((np.void(Point3(d.pos)) for d in devices), dtype=Point3)  # type: ignore[no-matching-overload]
+        rot = np.fromiter((np.void(Quaternion(d.rot)) for d in devices), dtype=Quaternion)  # type: ignore[no-matching-overload]
         self._ptr = Emu().emulator(
-            pos.ctypes.data_as(ctypes.POINTER(Point3)),  # type: ignore[arg-type]
-            rot.ctypes.data_as(ctypes.POINTER(Quaternion)),  # type: ignore[arg-type]
+            pos.ctypes.data_as(ctypes.POINTER(Point3)),
+            rot.ctypes.data_as(ctypes.POINTER(Quaternion)),
             len(devices),
         )
         super().__init__(Emu().emulator_geometry(self._ptr))
@@ -50,14 +50,14 @@ class Emulator(Geometry):
         nz = np.zeros(n, dtype=np.float32)
         Emu().emulator_transducer_table(
             self._ptr,
-            dev_indices.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),  # type: ignore[arg-type]
-            tr_indices.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),  # type: ignore[arg-type]
-            x.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
-            y.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
-            z.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
-            nx.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
-            ny.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
-            nz.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),  # type: ignore[arg-type]
+            dev_indices.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+            tr_indices.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+            x.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+            y.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+            z.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+            nx.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+            ny.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+            nz.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
         )
         return pl.DataFrame(
             {
@@ -86,7 +86,7 @@ class Emulator(Geometry):
 
         return Record(
             _validate_ptr(
-                Emu().emulator_record_from(self._ptr, start_time._inner, f_native_),  # type: ignore[arg-type]
+                Emu().emulator_record_from(self._ptr, start_time._inner, f_native_),  # type: ignore[bad-argument-type]
             ),
         )
 

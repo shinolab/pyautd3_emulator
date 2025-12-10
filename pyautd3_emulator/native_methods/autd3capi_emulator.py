@@ -116,7 +116,7 @@ class ResultRms(ctypes.Structure):
 
 
 class Singleton(type):
-    _instances = {}  # type: ignore[var-annotated]
+    _instances = {}
     _lock = threading.Lock()
 
     def __call__(cls, *args, **kwargs):
@@ -256,14 +256,13 @@ class NativeMethods(metaclass=Singleton):
     def emulator_record_drive_rows(self, record: RecordPtr) -> ctypes.c_uint64:
         return self.dll.AUTDEmulatorRecordDriveRows(record)
 
-    def emulator_record_phase(self, record: RecordPtr, time: ctypes.Array[ctypes.c_uint64], v: ctypes.Array[ctypes.Array[ctypes.c_uint8]]) -> None:
+    def emulator_record_phase(
+        self, record: RecordPtr, time: "ctypes._Pointer[ctypes.c_uint64]", v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_uint8]]"
+    ) -> None:
         return self.dll.AUTDEmulatorRecordPhase(record, time, v)
 
     def emulator_record_pulse_width(
-        self,
-        record: RecordPtr,
-        time: ctypes.Array[ctypes.c_uint64],
-        v: ctypes.Array[ctypes.Array[ctypes.c_uint16]],
+        self, record: RecordPtr, time: "ctypes._Pointer[ctypes.c_uint64]", v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_uint16]]"
     ) -> None:
         return self.dll.AUTDEmulatorRecordPulseWidth(record, time, v)
 
@@ -276,13 +275,13 @@ class NativeMethods(metaclass=Singleton):
     def emulator_sound_field_instant_points_len(self, sound_field: InstantPtr) -> ctypes.c_uint64:
         return self.dll.AUTDEmulatorSoundFieldInstantPointsLen(sound_field)
 
-    def emulator_sound_field_instant_get_x(self, sound_field: InstantPtr, x: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_instant_get_x(self, sound_field: InstantPtr, x: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldInstantGetX(sound_field, x)
 
-    def emulator_sound_field_instant_get_y(self, sound_field: InstantPtr, y: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_instant_get_y(self, sound_field: InstantPtr, y: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldInstantGetY(sound_field, y)
 
-    def emulator_sound_field_instant_get_z(self, sound_field: InstantPtr, z: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_instant_get_z(self, sound_field: InstantPtr, z: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldInstantGetZ(sound_field, z)
 
     def emulator_sound_field_instant_skip(self, sound_field: InstantPtr, duration: Duration) -> ResultStatus:
@@ -292,15 +291,15 @@ class NativeMethods(metaclass=Singleton):
         self,
         sound_field: InstantPtr,
         duration: Duration,
-        time: ctypes.Array[ctypes.c_uint64],
-        v: ctypes.Array[ctypes.Array[ctypes.c_float]],
+        time: "ctypes._Pointer[ctypes.c_uint64]",
+        v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_float]]",
     ) -> ResultStatus:
         return self.dll.AUTDEmulatorSoundFieldInstantNext(sound_field, duration, time, v)
 
     def emulator_sound_field_instant_free(self, sound_field: InstantPtr) -> None:
         return self.dll.AUTDEmulatorSoundFieldInstantFree(sound_field)
 
-    def emulator(self, pos: ctypes.Array[Point3], rot: ctypes.Array[Quaternion], len_: int) -> EmulatorPtr:
+    def emulator(self, pos: "ctypes._Pointer[Point3]", rot: "ctypes._Pointer[Quaternion]", len_: int) -> EmulatorPtr:
         return self.dll.AUTDEmulator(pos, rot, len_)
 
     def emulator_free(self, emulator: EmulatorPtr) -> None:
@@ -324,24 +323,24 @@ class NativeMethods(metaclass=Singleton):
     def emulator_transducer_table(
         self,
         emulator: EmulatorPtr,
-        dev_indices: ctypes.Array[ctypes.c_uint16],
-        tr_indices: ctypes.Array[ctypes.c_uint8],
-        x: ctypes.Array[ctypes.c_float],
-        y: ctypes.Array[ctypes.c_float],
-        z: ctypes.Array[ctypes.c_float],
-        nx: ctypes.Array[ctypes.c_float],
-        ny: ctypes.Array[ctypes.c_float],
-        nz: ctypes.Array[ctypes.c_float],
+        dev_indices: "ctypes._Pointer[ctypes.c_uint16]",
+        tr_indices: "ctypes._Pointer[ctypes.c_uint8]",
+        x: "ctypes._Pointer[ctypes.c_float]",
+        y: "ctypes._Pointer[ctypes.c_float]",
+        z: "ctypes._Pointer[ctypes.c_float]",
+        nx: "ctypes._Pointer[ctypes.c_float]",
+        ny: "ctypes._Pointer[ctypes.c_float]",
+        nz: "ctypes._Pointer[ctypes.c_float]",
     ) -> None:
         return self.dll.AUTDEmulatorTransducerTable(emulator, dev_indices, tr_indices, x, y, z, nx, ny, nz)
 
     def emulator_record_output_cols(self, record: RecordPtr) -> ctypes.c_uint64:
         return self.dll.AUTDEmulatorRecordOutputCols(record)
 
-    def emulator_record_output_voltage(self, record: RecordPtr, v: ctypes.Array[ctypes.Array[ctypes.c_float]]) -> None:
+    def emulator_record_output_voltage(self, record: RecordPtr, v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_float]]") -> None:
         return self.dll.AUTDEmulatorRecordOutputVoltage(record, v)
 
-    def emulator_record_output_ultrasound(self, record: RecordPtr, v: ctypes.Array[ctypes.Array[ctypes.c_float]]) -> None:
+    def emulator_record_output_ultrasound(self, record: RecordPtr, v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_float]]") -> None:
         return self.dll.AUTDEmulatorRecordOutputUltrasound(record, v)
 
     def emulator_sound_field_rms(self, record: RecordPtr, range_: RangeXYZ, option: RmsRecordOption) -> ResultRms:
@@ -353,24 +352,20 @@ class NativeMethods(metaclass=Singleton):
     def emulator_sound_field_rms_points_len(self, sound_field: RmsPtr) -> ctypes.c_uint64:
         return self.dll.AUTDEmulatorSoundFieldRmsPointsLen(sound_field)
 
-    def emulator_sound_field_rms_get_x(self, sound_field: RmsPtr, x: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_rms_get_x(self, sound_field: RmsPtr, x: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldRmsGetX(sound_field, x)
 
-    def emulator_sound_field_rms_get_y(self, sound_field: RmsPtr, y: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_rms_get_y(self, sound_field: RmsPtr, y: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldRmsGetY(sound_field, y)
 
-    def emulator_sound_field_rms_get_z(self, sound_field: RmsPtr, z: ctypes.Array[ctypes.c_float]) -> None:
+    def emulator_sound_field_rms_get_z(self, sound_field: RmsPtr, z: "ctypes._Pointer[ctypes.c_float]") -> None:
         return self.dll.AUTDEmulatorSoundFieldRmsGetZ(sound_field, z)
 
     def emulator_sound_field_rms_skip(self, sound_field: RmsPtr, duration: Duration) -> ResultStatus:
         return self.dll.AUTDEmulatorSoundFieldRmsSkip(sound_field, duration)
 
     def emulator_sound_field_rms_next(
-        self,
-        sound_field: RmsPtr,
-        duration: Duration,
-        time: ctypes.Array[ctypes.c_uint64],
-        v: ctypes.Array[ctypes.Array[ctypes.c_float]],
+        self, sound_field: RmsPtr, duration: Duration, time: "ctypes._Pointer[ctypes.c_uint64]", v: "ctypes._Pointer[ctypes._Pointer[ctypes.c_float]]"
     ) -> ResultStatus:
         return self.dll.AUTDEmulatorSoundFieldRmsNext(sound_field, duration, time, v)
 

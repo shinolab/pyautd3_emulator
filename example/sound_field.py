@@ -58,9 +58,9 @@ def plot_focus() -> None:
         def anim(i: int):  # noqa: ANN202
             ax.cla()
             z = p[i].to_numpy().reshape(p_shape)
-            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=-10e3, vmax=10e3))  # type: ignore[attr-defined]
-            ax.set_zlim(-10e3, 10e3)  # type: ignore[attr-defined]
-            ax.set_box_aspect(aspect)  # type: ignore[arg-type]
+            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=-10e3, vmax=10e3))
+            ax.set_zlim(-10e3, 10e3)
+            ax.set_box_aspect(aspect)
             ax.set_title(f"t={times[i]:.3f} [ms]")
             return plot
 
@@ -73,15 +73,15 @@ def plot_focus() -> None:
         ax = fig.add_subplot(spec[0], projection="3d")
         cax = fig.add_subplot(spec[1])
         rms = df.select(pl.exclude(r"^.\[mm\]$")).select(pl.all().pow(2)).mean_horizontal().sqrt()
-        ax.plot_surface(  # type: ignore[attr-defined]
+        ax.plot_surface(
             x,
             y,
             rms.to_numpy().reshape(p_shape),
             shade=False,
             cmap="jet",
-            norm=Normalize(vmin=0.0, vmax=rms.max()),  # type: ignore[arg-type]
+            norm=Normalize(vmin=0.0, vmax=rms.max()),
         )
-        colorbar.ColorbarBase(cax, cmap="jet", norm=Normalize(vmin=0.0, vmax=rms.max()))  # type: ignore[arg-type]
+        colorbar.ColorbarBase(cax, cmap="jet", norm=Normalize(vmin=0.0, vmax=rms.max()))
         plt.show()
 
 
@@ -142,9 +142,9 @@ def plot_stm() -> None:
         def anim(i: int):  # noqa: ANN202
             ax.cla()
             z = p[i].to_numpy().reshape(p_shape)
-            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=-10e3, vmax=10e3))  # type: ignore[attr-defined]
-            ax.set_zlim(-10e3, 10e3)  # type: ignore[attr-defined]
-            ax.set_box_aspect(aspect)  # type: ignore[arg-type]
+            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=-10e3, vmax=10e3))
+            ax.set_zlim(-10e3, 10e3)
+            ax.set_box_aspect(aspect)
             ax.set_title(f"t={times[i]:.3f} [ms]")
             return plot
 

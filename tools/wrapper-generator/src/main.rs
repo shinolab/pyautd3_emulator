@@ -223,7 +223,7 @@ impl<F: Fn(&str) -> bool> PythonWrapperGenerator<F> {
             w,
             r"
 class Singleton(type):
-    _instances = {{}}  # type: ignore[var-annotated]
+    _instances = {{}}  
     _lock = threading.Lock()
 
     def __call__(cls, *args, **kwargs):
