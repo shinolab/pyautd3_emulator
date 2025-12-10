@@ -104,5 +104,5 @@ class Record:
                         Emu().emulator_sound_field_rms(self._ptr, range_._inner, option._inner),
                     ),
                 )
-            case _:
+            case _:  # pragma: no cover
                 raise NotImplementedError  # pragma: no cover
