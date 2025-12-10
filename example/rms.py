@@ -46,16 +46,16 @@ def plot_focus() -> None:
         spec = fig.add_gridspec(ncols=2, nrows=1, width_ratios=[10, 1])
         ax = fig.add_subplot(spec[0], projection="3d")
         cax = fig.add_subplot(spec[1])
-        ax.plot_surface(  # type: ignore[attr-defined]
+        ax.plot_surface(
             x,
             y,
             rms,
             shade=False,
             cmap="jet",
-            norm=Normalize(vmin=0.0, vmax=rms.max()),  # type: ignore[arg-type]
+            norm=Normalize(vmin=0.0, vmax=rms.max()),
         )
-        ax.set_box_aspect(aspect)  # type: ignore[arg-type]
-        colorbar.ColorbarBase(cax, cmap="jet", norm=Normalize(vmin=0.0, vmax=rms.max()))  # type: ignore[arg-type]
+        ax.set_box_aspect(aspect)
+        colorbar.ColorbarBase(cax, cmap="jet", norm=Normalize(vmin=0.0, vmax=rms.max()))
         plt.show()
 
 
@@ -114,9 +114,9 @@ def plot_stm() -> None:
         def anim(i: int):  # noqa: ANN202
             ax.cla()
             z = rms[i].to_numpy().reshape(rms_shape)
-            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=0, vmax=5e3))  # type: ignore[attr-defined]
-            ax.set_zlim(0, 5e3)  # type: ignore[attr-defined]
-            ax.set_box_aspect(aspect)  # type: ignore[arg-type]
+            plot = ax.plot_surface(x, y, z, shade=False, cmap="jet", norm=Normalize(vmin=0, vmax=5e3))
+            ax.set_zlim(0, 5e3)
+            ax.set_box_aspect(aspect)
             ax.set_title(f"t={times[i]:.3f} [ms]")
             return plot
 
